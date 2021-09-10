@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bazzi.job.platform.mapper.JobExecuteLogMapper">
+    <resultMap id="BaseResultMap" type="com.bazzi.job.platform.model.JobExecuteLog">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="job_id" jdbcType="INTEGER" property="jobId"/>
+        <result column="job_name" jdbcType="VARCHAR" property="jobName"/>
+        <result column="job_group" jdbcType="VARCHAR" property="jobGroup"/>
+        <result column="host_ip" jdbcType="VARCHAR" property="hostIp"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <result column="expend_time" jdbcType="INTEGER" property="expendTime"/>
+        <result column="err_msg" jdbcType="VARCHAR" property="errMsg"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id
+        , job_id, job_name, job_group, host_ip, status, expend_time, err_msg, create_time
+    </sql>
+</mapper>

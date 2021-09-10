@@ -1,0 +1,53 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/job?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&roundRobinLoadBalance=true&failOverReadOnly=false&allowMultiQueries=true&serverTimezone=Asia/Shanghai
+    username: root
+    password: 12345678
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      ## 连接池名称
+      pool-name: platform_hikari
+      ## 此属性控制池中连接的最长生命周期，值0表示无限生命周期，默认1800000即30分钟
+      max-lifetime: 1800000
+      ## 连接池最大连接数，默认是10
+      maximum-pool-size: 20
+      ## 最小空闲连接数量
+      minimum-idle: 1
+      ## 空闲连接存活最大时间，默认600000（10分钟）
+      idle-timeout: 180000
+      ## 此属性控制从池返回的连接的默认自动提交行为,默认值：true
+      auto-commit: true
+      ## 数据库连接超时时间,默认30秒，即30000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+  redis:
+    cluster:
+      nodes:
+        192.168.0.1:7001,
+        192.168.0.2:7002,
+        192.168.0.3:7003,
+        192.168.0.1:7004,
+        192.168.0.2:7005,
+        192.168.0.3:7006
+  kafka:
+    bootstrap-servers: 192.168.0.1:9092,192.168.0.2:9092,192.168.0.3:9092
+    consumer:
+      group-id: job-platform
+  pool:
+    size: 8
+    thread-name-prefix: task-scheduler-pool-
+    await-termination-seconds: 60
+    waitForTasksToComplete: true
+  zookeeper:
+    url: 192.168.0.1:2181,192.168.0.2:2181,192.168.0.3:2181
+    timeout: 30000
+
+emailTitle: 预警邮件-测试环境
+
+#日志
+logging:
+  file:
+    max-history: 15
+  level:
+    root: debug
